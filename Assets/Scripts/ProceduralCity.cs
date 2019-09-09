@@ -8,7 +8,7 @@ public class ProceduralCity : MonoBehaviour
     public float connectionDistance;
     public int cityDistance = 20;
 
-    public List<GameObject> cities = new List<GameObject>();
+    private List<GameObject> cities = new List<GameObject>();
 
     void Awake()
     {
@@ -38,23 +38,20 @@ public class ProceduralCity : MonoBehaviour
         }
     }
 
-    List<Transform> GetClosestEnemy(Vector3 myPosition)
+    Transform GetClosestEnemy(Vector3 currentPos)
     {
-        List<Transform> tMin = new List<Transform>();
+        Transform tMin = null;
         float minDist = Mathf.Infinity;
 
         foreach (GameObject t in cities)
         {
-            float dist = Vector3.Distance(myPosition, t.transform.position);
-
-            if (dist < minDist && dist > 0.01f)
+            float dist = Vector3.Distance(t.transform.position, currentPos);
+            if (dist < minDist && dist != 0)
             {
-                //tMin[0] = t.transform;
-                //tMin.Add(t.transform);
+                tMin = t.transform;
                 minDist = dist;
             }
         }
-
         return tMin;
     }
 
@@ -62,8 +59,7 @@ public class ProceduralCity : MonoBehaviour
     {
         foreach (GameObject x in cities)
         {
-            //cities.
-            Debug.DrawLine(x.transform.position, GetClosestEnemy(x.transform.position)[0].transform.position, Color.red);
+            Debug.DrawLine(x.transform.position, GetClosestEnemy(x.transform.position).position, Color.red);
         }
     }
 }
