@@ -6,16 +6,25 @@ using UnityEngine.AI;
 public class Agent : MonoBehaviour
 {
     NavMeshAgent agent;
-    public GameObject ball;
+    public GameObject target;
+    public GameObject blood;
     
     void Awake()
     {
+        target = GameObject.FindGameObjectWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
     }
-
-    // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(ball.transform.position);
+        agent.SetDestination(target.transform.position);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.tag == "Projectile")
+        {
+            Instantiate(blood, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
     }
 }

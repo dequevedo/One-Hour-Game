@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2016296964036960252}
   - component: {fileID: 2016296964036960240}
   - component: {fileID: 2016296964036960253}
+  - component: {fileID: 6443098367271613687}
+  - component: {fileID: 1775930385632093373}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -43,10 +45,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 15
-  m_Acceleration: 16
+  m_Speed: 10
+  m_Acceleration: 10
   avoidancePriority: 50
-  m_AngularSpeed: 200
+  m_AngularSpeed: 100
   m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -68,20 +70,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 0}
---- !u!136 &7982690118427645861
+  blood: {fileID: 1747975906217599877, guid: 92690d5be94f2364ea83bfd39956e38d, type: 3}
+--- !u!136 &6443098367271613687
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7530994748003748306}
+  m_GameObject: {fileID: 2016296964036960243}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.75
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!54 &1775930385632093373
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016296964036960243}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
 --- !u!1001 &7530994748003790380
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -143,12 +162,6 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 85aca220a44f14341b942ba3b5712eb0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14fb53f2cd63dc748a001cc7b31bf21d, type: 3}
---- !u!1 &7530994748003748306 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 108542, guid: 14fb53f2cd63dc748a001cc7b31bf21d,
-    type: 3}
-  m_PrefabInstance: {fileID: 7530994748003790380}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7530994748004204736 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 437996, guid: 14fb53f2cd63dc748a001cc7b31bf21d,
